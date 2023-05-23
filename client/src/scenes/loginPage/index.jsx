@@ -13,7 +13,7 @@ const LoginPage = () => {
         textAlign="center"
       >
         <Typography fontWeight="bold" fontSize="32px" color="primary">
-          Sociopedia
+          Pensamento Computacional
         </Typography>
       </Box>
 
@@ -25,9 +25,9 @@ const LoginPage = () => {
         backgroundColor={theme.palette.background.alt}
       >
         <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }}>
-          Welcome to Socipedia, the Social Media for Sociopaths!
+          A melhor maneira de aprender Lógica Computacional
         </Typography>
-        <Form />
+        <Form/>
       </Box>
     </Box>
   );

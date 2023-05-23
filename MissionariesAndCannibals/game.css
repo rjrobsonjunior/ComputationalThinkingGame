@@ -1,0 +1,73 @@
+html,body
+{
+    height: 100%;
+    width: 100%
+	margin: 0;
+	background-color: black;
+    padding: 0;
+    overflow: hidden;
+	font-family: arial;
+
+}
+#container
+{
+	background-image: url("images/back.png");
+	background-repeat: no-repeat;
+    background-size: 100% 100%;
+	border-radius: 20px;
+	margin:0;
+	display: block;
+	height: inherit;
+	width: inherit;
+    padding: 0;
+    position: relative;
+}
+
+#source {
+    position: relative;
+    height: 200px;
+    width: 338px;
+    float: left;
+ 
+    margin-top: 320px;
+    z-index: 200;
+}
+#boat {
+    position: relative;
+    height: 200px;
+    width: 870px;
+    float: left;
+    margin-top: 400px;
+    margin-left: -150px;
+}
+#dest {
+    position: relative;
+    height: 200px;
+    width: 330px;
+    float: left;
+    margin-top: 306px;
+    margin-left: -104px;
+    z-index: 200;
+}
+#boat1
+{
+    position: relative;
+    display: inline-block;
+}
+#text{
+	background-color:#ffffff;
+	
+	border: 2px black solid;
+	border-radius: 20px;
+	position: absolute;
+	font-size: 11px;
+	top: 5px;
+	right: 5px;
+	padding: 5px;
+}
+#c1:hover ,#c2:hover ,#c3:hover ,#s1:hover ,#s2:hover,#s3:hover {
+
+    opacity: 0.8;
+	border: 2px red solid;
+	border-radius: 10px;
+}
