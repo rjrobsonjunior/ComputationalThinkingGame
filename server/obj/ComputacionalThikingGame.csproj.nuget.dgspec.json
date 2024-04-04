@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "/home/rj/Documents/PETECO/ComputacionalThikingGame/server/server.csproj": {}
+    "/home/rj/Documents/PETECO/ComputacionalThikingGame/server/ComputacionalThikingGame.csproj": {}
   },
   "projects": {
-    "/home/rj/Documents/PETECO/ComputacionalThikingGame/server/server.csproj": {
+    "/home/rj/Documents/PETECO/ComputacionalThikingGame/server/ComputacionalThikingGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rj/Documents/PETECO/ComputacionalThikingGame/server/server.csproj",
-        "projectName": "server",
-        "projectPath": "/home/rj/Documents/PETECO/ComputacionalThikingGame/server/server.csproj",
+        "projectUniqueName": "/home/rj/Documents/PETECO/ComputacionalThikingGame/server/ComputacionalThikingGame.csproj",
+        "projectName": "ComputacionalThikingGame",
+        "projectPath": "/home/rj/Documents/PETECO/ComputacionalThikingGame/server/ComputacionalThikingGame.csproj",
         "packagesPath": "/home/rj/.nuget/packages/",
         "outputPath": "/home/rj/Documents/PETECO/ComputacionalThikingGame/server/obj/",
         "projectStyle": "PackageReference",
@@ -42,16 +42,6 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[8.0.3, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.4.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -71,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

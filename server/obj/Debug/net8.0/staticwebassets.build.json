@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "wHmTdzQjOI+52yc/ssik8jb3aBon0KdSXd8S7aZ3iSw=",
-  "Source": "server",
-  "BasePath": "_content/server",
+  "Hash": "tI+38bPROz2e2UYd6yqNC2dXgX+4y0YhTy02vcavG74=",
+  "Source": "ComputacionalThikingGame",
+  "BasePath": "_content/ComputacionalThikingGame",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
