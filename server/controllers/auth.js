@@ -14,7 +14,7 @@ exports.signup = async (req, res) => {
 
         // Salvar no banco de dados
         await pool.query(
-            'INSERT INTO PETcode.users (username, email, password) VALUES ($1, $2, $3)',
+            'INSERT INTO users (username, email, password) VALUES ($1, $2, $3)',
             [username, email, hashedPassword]
         );
 
@@ -30,7 +30,7 @@ exports.login = async (req, res) => {
         const { email, password } = req.body;
 
         // Verificar se o email existe no banco de dados
-        const user = await pool.query('SELECT * FROM PETcode.users WHERE email = $1', [email]);
+        const user = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
         if (user.rows.length === 0) {
             return res.status(401).json({ error: 'Email ou senha incorretos' });
         }
