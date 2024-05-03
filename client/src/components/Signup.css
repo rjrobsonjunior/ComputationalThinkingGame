@@ -1,0 +1,27 @@
+.Login{
+    background-color: #111315;
+    color : white;
+    display: block;
+    height: 100vh;
+    font-size: 16px;
+}
+form{
+    border: 2px #6F767E;
+    gap: 16px;
+    padding: 6px;
+    border-radius: 4px;
+
+}
+button{
+    background-color: #FBBC05;
+    color : white; 
+    border-radius: 4px;
+    justify-content: center;
+}
+input{
+    display: block;
+    background-color: #111315;
+    color : white; 
+    gap: 16px;
+    border-radius: 4px;
+}
