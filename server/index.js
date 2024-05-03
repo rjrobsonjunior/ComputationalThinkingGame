@@ -1,9 +1,14 @@
-const express = require('express')
+const express = require('express');
 
 const app = express();
-const PORT = process.env.PORT  || 5000;
+const PORT = process.env.PORT || 5000;
+//app.use(express.json());
 
-app.use(express.json());
+
+app.get("/", function(req, res){
+    res.send("Pagina inicial"); 
+});
+
 
 //routes for authentication
 app.use('/auth', require('./routes/auth'));
