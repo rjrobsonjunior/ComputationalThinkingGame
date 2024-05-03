@@ -7,7 +7,14 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
+<<<<<<< HEAD
     "pg": "^8.11.5",
     "react-router-dom": "^6.23.0"
+=======
+    "pg": "^8.11.5"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+>>>>>>> 839bb7c6d452e23dc589df01f49c740a1726820d
   }
 }
