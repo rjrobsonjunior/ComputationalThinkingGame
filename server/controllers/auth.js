@@ -4,11 +4,10 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const pool = require('../db');
 
-const JWT_SECRET = 'teste';
-
 
 exports.signup = async (req, res) => {
     try {
+        
         //Nenhum pode ser nulo
         const { username, email, password } = req.body;
         if (!username || !email || !password) {
@@ -57,7 +56,7 @@ exports.login = async (req, res) => {
         
         // Gerar token de autenticação
         //const token = jwt.sign({ user_id: user.rows[0].id_user }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        const token = jwt.sign({ user_id: user.rows[0].id_user }, JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ user_id: user.rows[0].id_user }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.json({ token });
     } catch (error) {

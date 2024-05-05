@@ -8,8 +8,7 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.11.5",
-    "react-router-dom": "^6.23.0",
-    "pg": "^8.11.5"
+    "react-router-dom": "^6.23.0"
   },
   "scripts": {
     "start": "nodemon index.js"
