@@ -46,7 +46,7 @@ function Login() {
             value={email}
             onChange={handleChange} 
             />
-            <input ttype="password"
+            <input type="password"
             name="password"
             placeholder="Password"
             value={password}
