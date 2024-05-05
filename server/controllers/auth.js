@@ -37,7 +37,6 @@ exports.signup = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
-        console.log(process.env);
         const { email, password } = req.body;
         console.log(req.body);
 
