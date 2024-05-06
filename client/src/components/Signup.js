@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import "./Signup.css";
-import logo from "./logoPET.png";
-import imagePage from "./ladingpage.png"
+import logo from "./assets/logoPET.png";
+import imagePage from "./assets/ladingpage.png"
 import {toast} from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -41,7 +41,7 @@ function Signup() {
       <img src={logo} alt="Logo" 
         style={{ 
           width: '150px', 
-          padding: '20% 0px 0px 0px',
+          padding: '15% 0px 0px 0px',
           margin: 'auto', 
           display: 'block' 
         }} />

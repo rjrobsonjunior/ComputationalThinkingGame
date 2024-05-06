@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import logo from "./logoPET.png";
-import imagePage from "./ladingpage.png"
+import logo from "./assets/logoPET.png";
+import imagePage from "./assets/ladingpage.png"
 import "./Signup.css";
 import { useNavigate, Link } from 'react-router-dom'; 
 import { toast } from 'react-toastify';
@@ -23,7 +23,7 @@ function Login() {
       const res = await axios.post('auth/login', formData);
       localStorage.setItem('token', res.data.token);
       toast.success('Conectado com sucesso!'); 
-      navigate('/home'); 
+      navigate('/catalog'); 
       console.log(res.data);
     } catch (error) {
       toast.error('Falha ao logar!');
@@ -41,7 +41,7 @@ function Login() {
           <img src={logo} alt="Logo" 
           style={{ 
           width: '150px', 
-          padding: '20% 0px 0px 0px',
+          padding: '15% 0px 0px 0px',
           margin: 'auto', 
           display: 'block'
           }} />

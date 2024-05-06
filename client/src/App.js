@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Catalog from './components/Catalog';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './components/Home';
 import { ToastContainer } from 'react-toastify';
@@ -35,6 +36,7 @@ const App = () => {
       <Routes>
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/" element={<Login />} />
+        <Route exact path="/catalog" element={<Catalog />} />
         <Route path="/home" element={<ProtectedRoute isAuthenticated={isAuthenticated} component={Home} />} />
       </Routes>
       <ToastContainer theme="dark" autoClose={300}/>

@@ -1,0 +1,23 @@
+.page{
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    background-color: #111315;
+    color: white;
+}
+
+@media (min-width: 40rem) {
+    .container2 {          
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 22vmax 22vmax 22vmax 22vmax;
+        grid-template-rows: .9fr .9fr;
+        grid-gap: 1vmax;    
+        margin: 1vmax auto;
+    }
+}
+
+.container2 > div:nth-child(n + 1):hover{
+    transform: scale(1.07);
+    box-shadow: 0 3px 5px 0 rgba(116, 113, 113, 0.582), 0 3px 6px 0 rgba(255, 68, 0, 0.856);
+}
