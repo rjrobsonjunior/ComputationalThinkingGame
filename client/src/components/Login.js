@@ -3,13 +3,15 @@ import axios from 'axios';
 import logo from "./logoPET.png";
 import imagePage from "./ladingpage.png"
 import "./Signup.css";
+import { useNavigate, Link } from 'react-router-dom'; 
+import { toast } from 'react-toastify';
 
 function Login() {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
-
+  const navigate = useNavigate(); // Instantiate useNavigate
   const { email, password } = formData;
 
   const handleChange = e =>
@@ -19,22 +21,29 @@ function Login() {
     e.preventDefault();
     try {
       const res = await axios.post('auth/login', formData);
+      localStorage.setItem('token', res.data.token);
+      toast.success('Conectado com sucesso!'); 
+      navigate('/home'); 
       console.log(res.data);
     } catch (error) {
+      toast.error('Falha ao logar!');
       console.error(error.response.data);
     }
   };
 
+  const handleClick = () => {
+    navigate('/signup');
+  };
   return (
     
     <div class="container" id="container">
       <div class="form-container sign-in-container">
           <img src={logo} alt="Logo" 
           style={{ 
-            width: '100px', 
-            padding: '30% 0px 0px 0px',
-            margin: 'auto', // Centralize horizontalmente
-            display: 'block' // Certifique-se de que a margem funcione corretamente
+          width: '150px', 
+          padding: '20% 0px 0px 0px',
+          margin: 'auto', 
+          display: 'block'
           }} />
           
           
@@ -55,7 +64,7 @@ function Login() {
             <button type="submit">Entrar</button>
             <div className='chunxo'>
               <a>Não tem uma conta?</a>
-              <a style={{color:'#f8bb0f'}}>Increva-se</a>
+              <Link to="/signup" style={{ color: '#f8bb0f' }}>Increva-se</Link>
             </div>
             
           </form>
@@ -70,7 +79,7 @@ function Login() {
                 }} />
                 <h1>Bem vindo de volta!</h1>
                 <p>Para se manter conectado conosco, faça login com suas credenciais!</p>
-                <button class="ghost" id="Increva-se">Sign Up</button>
+                <button onClick={handleClick} class="ghost" id="signup">Inscrever-se</button>
               </div>
           </div>
       </div>
