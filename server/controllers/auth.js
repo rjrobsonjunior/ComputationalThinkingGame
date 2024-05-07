@@ -55,12 +55,33 @@ exports.login = async (req, res) => {
         }
         
         // Gerar token de autenticação
-        //const token = jwt.sign({ user_id: user.rows[0].id_user }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        //EXTRUTURA JWT -> HEADER.PAYLOAD.SIGNATURE 
+        //header = algoritmo de encriptação (HS256) | payload = dados do usuário | signature = hash gerado com base no header e payload
         const token = jwt.sign({ user_id: user.rows[0].id_user }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.json({ token });
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ error: 'Erro ao fazer login' });
+    }
+};
+
+exports.checkAuth = async (req, res) => {
+    try {
+        const token = req.header('x-auth-token');
+        console.log("Verificando autenticação...");
+
+        // Verificar se o token existe
+        if (!token) {
+            return res.status(401).json({ error: 'Token não fornecido' });
+        }
+
+        //Verificar se o token existe através da chave secreta
+        const verified = jwt.verify(token, process.env.JWT_SECRET);
+
+        res.json(verified); 
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: 'Erro ao verificar autenticação' });
     }
 };
