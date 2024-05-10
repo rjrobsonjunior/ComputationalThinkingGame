@@ -28,7 +28,7 @@ const App = () => {
       }
     }
   };
-
+  //        <Route exact path="/codeEditor" element={<CodeEditor/>} />
   useEffect(() => {
     checkAuthenticated();
   }, []);
@@ -39,7 +39,6 @@ const App = () => {
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/" element={<Login />} />
         <Route exact path="/catalog" element={<Catalog />} />
-        <Route exact path="/codeEditor" element={<CodeEditor/>} />
         <Route exact path="/code" element={<CodeRunner/>} />
         <Route path="/home" element={<ProtectedRoute isAuthenticated={isAuthenticated} component={Home} />} />
       </Routes>

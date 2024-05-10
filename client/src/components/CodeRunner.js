@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import CodeEditor from './CodeEditor';
+import './CodeRunner.css';
 
 const CodeEvaluator = () => {
   const [code, setCode] = useState('');
@@ -26,8 +28,9 @@ const CodeEvaluator = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
       <h2>JavaScript Code Evaluator</h2>
+      <CodeEditor code={code} />
       <textarea
         value={code}
         onChange={handleCodeChange}
