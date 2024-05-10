@@ -6,16 +6,48 @@
     color: white;
 }
 
-@media (min-width: 40rem) {
-    .container2 {          
-        display: grid;
-        justify-content: center;
+body{
+  background-color: #111315;
+}
+.container2 {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    background-color: #111315;
+    color: white;
+}
+  
+  /* Media query for screens up to 768px wide */
+  @media screen and (max-width: 700px) {
+    .container2 {
+        grid-template-columns: 40vmax 40vmax;
+        grid-template-rows: .9fr .9fr;
+        grid-gap: 1vmax;    
+        margin: 1vmax auto;
+    }
+  }
+  
+  /* Media query for screens up to 1024px wide */
+  @media screen and (max-width: 1224px) {
+    .container2 {
+        grid-template-columns: 30vmax 30vmax 30vmax;
+        grid-template-rows: .9fr .9fr;
+        grid-gap: 1vmax;    
+        margin: 1vmax auto;
+    }
+  }
+  
+  /* Media query for screens larger than 1024px */
+  @media screen and (min-width: 1225px) {
+    .container2 {
         grid-template-columns: 22vmax 22vmax 22vmax 22vmax;
         grid-template-rows: .9fr .9fr;
         grid-gap: 1vmax;    
         margin: 1vmax auto;
     }
-}
+  }
+
 
 .container2 > div:nth-child(n + 1):hover{
     transform: scale(1.07);
