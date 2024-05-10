@@ -21,8 +21,11 @@ function Login() {
     e.preventDefault();
     try {
       const res = await axios.post('auth/login', formData);
-      localStorage.setItem('token', res.data.token);
+
+      //Armanezar o token no sessionStorage (Ná)
+      sessionStorage.setItem('token', res.data.token);
       toast.success('Conectado com sucesso!'); 
+      
       navigate('/catalog'); 
       console.log(res.data);
     } catch (error) {

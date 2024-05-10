@@ -16,9 +16,9 @@ const Catalog = () => {
 
     return (
         <div className='container2'>
-        {courses.map((course) => (
-            <Course key={course.name} {...course} />
-        ))}
+            {courses.map((course) => (
+                <Course key={course.name} {...course} />
+            ))}
         </div>
     );
 }

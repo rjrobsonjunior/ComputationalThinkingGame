@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
+import Catalog from './components/Catalog';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import Catalog from './components/Catalog';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './components/Home';
 import CodeRunner from './components/CodeRunner'
@@ -15,10 +15,11 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const checkAuthenticated = async () => {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
+
     if (token) {
       try {
-        await axios.get('/api/auth/checkauth', {
+        await axios.get('auth/checkauth', {
           headers: { 'x-auth-token': token }
         });
         setIsAuthenticated(true);
@@ -37,8 +38,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/" element={<Login />} />
         <Route exact path="/catalog" element={<Catalog />} />
+        <Route exact path="/" element={<Login />} />
         <Route exact path="/code" element={<CodeRunner/>} />
         <Route path="/home" element={<ProtectedRoute isAuthenticated={isAuthenticated} component={Home} />} />
       </Routes>
