@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './components/Home';
 import CodeRunner from './components/CodeRunner'
 import CodeEditor from './components/CodeEditor'
+import Aula from './componentes/Aula'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -41,6 +42,7 @@ const App = () => {
         <Route exact path="/catalog" element={<Catalog />} />
         <Route exact path="/" element={<Login />} />
         <Route exact path="/code" element={<CodeRunner/>} />
+        <Route exact path="/Aula" element={<Aula/>} />
         <Route path="/home" element={<ProtectedRoute isAuthenticated={isAuthenticated} component={Home} />} />
       </Routes>
       <ToastContainer theme="dark" autoClose={300}/>
