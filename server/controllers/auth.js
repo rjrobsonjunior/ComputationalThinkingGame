@@ -58,7 +58,7 @@ exports.login = async (req, res) => {
         //EXTRUTURA JWT -> HEADER.PAYLOAD.SIGNATURE 
         //header = algoritmo de encriptação (HS256) | payload = dados do usuário | signature = hash gerado com base no header e payload
         const token = jwt.sign({ user_id: user.rows[0].id_user }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
+        //console.log(token);
         res.json({ token });
     } catch (error) {
         console.error(error.message);

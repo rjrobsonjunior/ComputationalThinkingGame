@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; 
 import axios from 'axios';
 import Catalog from './components/Catalog';
 import Signup from './components/Signup';
@@ -29,7 +30,8 @@ const App = () => {
       }
     }
   };
-  //        <Route exact path="/codeEditor" element={<CodeEditor/>} />
+  //        <Route exact path="/codeEditor" element={<CodeEditor/>} />         <Route path="/home" element={<ProtectedRoute isAuthenticated={isAuthenticated} component={Home} />} />
+
   useEffect(() => {
     checkAuthenticated();
   }, []);
@@ -38,10 +40,14 @@ const App = () => {
     <Router>
       <Routes>
         <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/catalog" element={<Catalog />} />
         <Route exact path="/" element={<Login />} />
-        <Route exact path="/code" element={<CodeRunner/>} />
-        <Route path="/home" element={<ProtectedRoute isAuthenticated={isAuthenticated} component={Home} />} />
+        {/* Protected routes go here */}
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+          <Route path="/home" element={<Home/>} />
+          < Route path="/catalog" element={<Catalog/>}/>
+        </Route>
+        {/* Default redirect to login */}
+        <Route path="*" element={<useNavigate to="/" />} />
       </Routes>
       <ToastContainer theme="dark" autoClose={300}/>
     </Router>
