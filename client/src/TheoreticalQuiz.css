@@ -1,0 +1,11 @@
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }

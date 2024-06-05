@@ -26,7 +26,7 @@ function Login() {
       sessionStorage.setItem('token', res.data.token);
       toast.success('Conectado com sucesso!'); 
       
-      navigate('/home'); 
+      navigate('/catalog'); 
       console.log(res.data);
     } catch (error) {
       toast.error('Falha ao logar!');

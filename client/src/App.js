@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './components/Home';
+import TheoreticalQuiz from './TheoreticalQuiz';
 import CodeRunner from './components/CodeRunner'
 import CodeEditor from './components/CodeEditor'
 import { ToastContainer } from 'react-toastify';
@@ -28,6 +29,7 @@ const App = () => {
         console.error(error.message);
         setIsAuthenticated(false);
       }
+      console.log(isAuthenticated);
     }
   };
   //        <Route exact path="/codeEditor" element={<CodeEditor/>} />         <Route path="/home" element={<ProtectedRoute isAuthenticated={isAuthenticated} component={Home} />} />
@@ -41,6 +43,7 @@ const App = () => {
       <Routes>
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/" element={<Login />} />
+        <Route exact path="/quiz" element={<TheoreticalQuiz />} />
         {/* Protected routes go here */}
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
           <Route path="/home" element={<Home/>} />
