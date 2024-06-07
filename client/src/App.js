@@ -7,9 +7,9 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './components/Home';
-import TheoreticalQuiz from './TheoreticalQuiz';
-import CodeRunner from './components/CodeRunner'
-import CodeEditor from './components/CodeEditor'
+import TheoreticalQuiz from './components/TheoreticalQuiz';
+//import CodeRunner from './components/CodeRunner'
+//import CodeEditor from './components/CodeEditor'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

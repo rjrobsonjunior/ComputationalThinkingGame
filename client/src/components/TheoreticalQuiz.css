@@ -1,0 +1,32 @@
+.options-quiz {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 50px;
+  height: 70%;
+  text-align: center;
+}
+  
+.button-quiz {
+  margin: 20px;
+  size: 18px;
+  height: 70px;
+  padding: 10px 20px;
+  cursor: pointer;
+  color : white;
+  border: none;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 0px;
+  border-color: 5px aliceblue;
+  background-color: #303235;
+}
+
+.button-quiz:hover{
+  transform: scale(1.07);
+  box-shadow: 0 3px 5px 0 rgba(116, 113, 113, 0.582), 0 3px 6px 0 rgba(230, 222, 219, 0.856);
+}

@@ -1,5 +1,7 @@
 import React from 'react';
 import Course from './Course';
+import Navbar from './Navbar';
+
 import './Catalog.css'
 
 const courses = [
@@ -15,10 +17,13 @@ const courses = [
 const Catalog = () => {
 
     return (
-        <div className='container2'>
-            {courses.map((course) => (
-                <Course key={course.name} {...course} />
-            ))}
+        <div>
+            <Navbar></Navbar>
+            <div className='container2'>
+                {courses.map((course) => (
+                    <Course key={course.name} {...course} />
+                ))}
+            </div>
         </div>
     );
 }

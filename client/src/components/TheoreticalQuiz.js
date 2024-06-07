@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from './Navbar';
 import "./TheoreticalQuiz.css";
 
 const quizData = [
@@ -52,16 +53,17 @@ const TheoreticalQuiz = () => {
       }
   
       return (
-        <div>
+        <div className='quiz-page'>
+          <Navbar></Navbar>
           <h2>{quizData[currentQuestion].question}</h2>
-          <div>
+          <div className='options-quiz'>
                 {quizData[currentQuestion].options.map((option) => (
-                  <button key={option} onClick={() => handleOptionClick(option)}>
+                  <button className='button-quiz' key={option} onClick={() => handleOptionClick(option)}>
                     {option}
                   </button>
             ))}
         </div>
-          <button onClick={handleNextQuestion} disabled={!selectedAnswer}>
+          <button className='button-next' onClick={handleNextQuestion} disabled={!selectedAnswer}>
             Next Question
           </button>
         </div>
@@ -70,7 +72,7 @@ const TheoreticalQuiz = () => {
   
     const renderResult = () => {
       return (
-        <div>
+        <div className='result-page'>
           <h2>You scored {score} out of {quizData.length}</h2>
           <button onClick={handleRestartQuiz}>Restart Quiz</button>
         </div>

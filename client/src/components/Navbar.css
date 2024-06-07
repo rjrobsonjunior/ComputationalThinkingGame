@@ -1,0 +1,33 @@
+nav {
+    background-color: #303235;
+    padding: 10px;
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin-right: 25px;
+    font-size: 28px;
+    padding-top: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+Link:hover {
+    color: #f8bb0f;
+}
+
+img {
+    width: 70px;
+    padding: 0px;
+    margin-right: 25px;
+}
