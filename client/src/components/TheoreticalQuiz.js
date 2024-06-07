@@ -1,19 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import "./TheoreticalQuiz.css";
-
-const quizData = [
-    {
-      question: 'What command would reveal more information ONLY about the Scan function in the fmt package?',
-      options: ['go doc', 'go doc fmt', 'fmt', 'go doc fmt.Scan'],
-      answer: 'go doc fmt.Scan',
-    },
-    {
-      question: 'Which of the following would be considered a literal in Go?',
-      options: ['13,89', 'var literalVal literal', 'uint16', 'const litealVal = 13,89'],
-      answer: '13,89',
-    },
-];
+import quizData from "./assets/quiz.json";
 
 const TheoreticalQuiz = () => {
 
@@ -21,13 +9,27 @@ const TheoreticalQuiz = () => {
     const [score, setScore] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [showResult, setShowResult] = useState(false);
-  
+    const [answed, setAnswed] = useState(false);
+    const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
+
     const handleOptionClick = (option) => {
-      setSelectedAnswer(option);
+      if(!answed)
+        setSelectedAnswer(option);
+      setAnswed(true);
+      setShowCorrectAnswer(true);
     };
-  
+
+    useEffect(() => {
+      const timeoutId = setTimeout(() => setShowCorrectAnswer(false), 1000); // Hide message after 1 second
+      return () => clearTimeout(timeoutId); // Cleanup on unmount
+    }, [selectedAnswer]);
+
+    const isCorrect = (option) => {
+      return quizData[currentQuestion].answer === option;
+    }
     const handleNextQuestion = () => {
       if (selectedAnswer) {
+        setAnswed(false);
         const isCorrect = quizData[currentQuestion].answer === selectedAnswer;
         setScore(isCorrect ? score + 1 : score);
         setCurrentQuestion(currentQuestion + 1);
@@ -45,7 +47,8 @@ const TheoreticalQuiz = () => {
     const handleShowResult = () => {
       setShowResult(true);
     };
-  
+    const progress = currentQuestion + 1;
+
     const renderQuestion = () => {
       const question = quizData[currentQuestion];
       if (!question) {
@@ -58,14 +61,23 @@ const TheoreticalQuiz = () => {
           <h2>{quizData[currentQuestion].question}</h2>
           <div className='options-quiz'>
                 {quizData[currentQuestion].options.map((option) => (
-                  <button className='button-quiz' key={option} onClick={() => handleOptionClick(option)}>
+                  <button className={`button-quiz ${isCorrect(option) ? 'correct' : 'false'} ${option === selectedAnswer ? 'selected' : ''}`} key={option} onClick={() => handleOptionClick(option)}>
                     {option}
                   </button>
             ))}
-        </div>
-          <button className='button-next' onClick={handleNextQuestion} disabled={!selectedAnswer}>
-            Next Question
+            {showCorrectAnswer && isCorrect(selectedAnswer) && <p>Correct!</p>}
+            {showCorrectAnswer && !isCorrect(selectedAnswer) && <p>Incorrect. The correct answer is: {quizData[currentQuestion].answer}</p>}
+          </div>
+          <div className='progress-bar'>
+            <span>{progress} / {quizData.length}</span>
+            <div className='progress-fill'>
+              <div style={{ width: `${(progress / quizData.length) * 100}%` }}></div>
+            </div>
+            <button className='button-next' onClick={handleNextQuestion} disabled={!selectedAnswer}>
+            Próxima
           </button>
+          </div>
+          
         </div>
       );
     };

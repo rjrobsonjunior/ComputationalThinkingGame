@@ -1,4 +1,13 @@
-.options-quiz {
+.quiz-page {
+  height: 100vh;
+}
+
+.quiz-page h2{
+ width:80%;
+ margin: 20px auto;
+ text-align: center;
+}
+.options-quiz { 
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
@@ -7,8 +16,6 @@
   justify-content: center;
   flex-direction: column;
   padding: 20px 50px;
-  height: 70%;
-  text-align: center;
 }
   
 .button-quiz {
@@ -29,4 +36,59 @@
 .button-quiz:hover{
   transform: scale(1.07);
   box-shadow: 0 3px 5px 0 rgba(116, 113, 113, 0.582), 0 3px 6px 0 rgba(230, 222, 219, 0.856);
+}
+
+button.correct.selected {
+  background-color: #4caf50; /* Green color for selected option */
+  color: white;
+}
+
+button.false.selected{
+  background-color: #c61f1f; /* Green color for selected option */
+  color: white;
+}
+
+.button-next {
+	border-radius: 0px;
+  margin: 5px 10px;
+  height: 40px;
+	border: 1px solid #e4d9ad;
+	background-color: #f8bb0f;
+	color: #FFFFFF;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.progress-bar span {
+  margin: 15px 10px;
+  font-size: 20px;
+	font-weight: bold;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  justify-content: space-between;
+  height: 50px; 
+  width: 100%;
+  display: flex;
+  background-color: #303235;
+  bottom : 1;
+}
+
+.progress-fill {
+  max-width: 900px;
+  width: 60%; 
+  height: 5px; /* Set height of the progress bar */
+  background-color: #ddd; /* Set background color for the unfilled part */
+  overflow: hidden; /* Hide overflow for the inner progress bar */
+  height: 10px;
+  margin-top: 20px;
+}
+
+.progress-fill div {
+  height: 100%; /* Set full height for the inner progress bar */
+  background-color: #f8bb0f; /* Set background color for the filled part */
+  transition: width 0;
 }
