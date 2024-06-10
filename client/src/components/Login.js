@@ -31,7 +31,8 @@ function Login({ checkAuthenticated }) {
       navigate('/home'); // Navega para '/home' após a autenticação ser verificada
       console.log(res.data);
     } catch (error) {
-      toast.error('Falha ao logar!');
+      let text_error = 'Falha ao logar! ' + error.response.data.error;
+      toast.error(error.response.data.error);
       console.error(error.response.data);
     }
   };
