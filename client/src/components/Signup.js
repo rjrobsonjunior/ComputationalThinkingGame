@@ -6,6 +6,7 @@ import imagePage from "./assets/ladingpage.png"
 import {toast} from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom';
 
+
 function Signup() {
   const [formData, setFormData] = useState({
     username: '',
@@ -24,9 +25,15 @@ function Signup() {
       const res = await axios.post('/auth/signup', formData);
       console.log(res.data);
       toast.success('Registrado com Sucesso!'); 
+
+      //Mover até pagina de login
+      navigate('/')    
     } catch (error) {
       console.error(error.response.data);
-      toast.error('Falha ao Registrar!');
+
+      //toast.error('Falha ao Registrar!');
+      toast.error(error.response.data.error);
+
     }
   };
 

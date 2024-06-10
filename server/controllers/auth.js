@@ -8,13 +8,26 @@ const pool = require('../db');
 exports.signup = async (req, res) => {
     try {
         
-        //Nenhum pode ser nulo
+        //Verificar se algum campo está vazio
         const { username, email, password } = req.body;
         if (!username || !email || !password) {
             return res.status(400).json({ error: 'Todos os campos precisam ser preechidos!' });
         }
+
+        //Verificar se o email já existe
+        const verificar_email = await pool.query('SELECT * FROM usuarios WHERE email = $1', [email]);
+        const verificar_username = await pool.query('SELECT * FROM usuarios WHERE username = $1', [username]);
+
+        if (verificar_email.rows.length !== 0) {
+            return res.status(401).json({ error: 'Email já cadastrado!'});
+        }
         
+        if(verificar_username.rows.length !== 0){
+            return res.status(401).json({error: 'Username já cadastrado!'})
+        }
+
         console.log("username: " + username + " email: " + email + " password: " + password);
+
 
         // Hash da senha
         const salt = await bcrypt.genSalt(10); //Valor aleatório para gerar o hash, tornando único
@@ -29,6 +42,7 @@ exports.signup = async (req, res) => {
         );
 
         res.status(201).json({ message: 'Usuário cadastrado com sucesso' });
+
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ error: 'Erro ao cadastrar usuário' });
@@ -78,6 +92,10 @@ exports.checkAuth = async (req, res) => {
 
         //Verificar se o token existe através da chave secreta
         const verified = jwt.verify(token, process.env.JWT_SECRET);
+        console.log("Token verificado no back: ", verified);
+
+        //Adcionar um delay para TESTE LOADING
+        //await new Promise(resolve => setTimeout(resolve, 5000));
 
         res.json(verified); 
     } catch (error) {

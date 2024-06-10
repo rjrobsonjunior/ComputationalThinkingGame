@@ -14,28 +14,45 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const checkAuthenticated = async () => {
     const token = sessionStorage.getItem('token');
+    //console.log("Verificando token...");
 
     if (token) {
       try {
         await axios.get('auth/checkauth', {
           headers: { 'x-auth-token': token }
         });
+
+        //console.log("Token de sessão encontrado!");
         setIsAuthenticated(true);
+
       } catch (error) {
+
         console.error(error.message);
         setIsAuthenticated(false);
+
       }
-      console.log(isAuthenticated);
     }
+    else{
+      console.log("Não há nenhum token de sessão!");
+      setIsAuthenticated(false);
+    }
+
+
+    setIsLoading(false);
   };
   //        <Route exact path="/codeEditor" element={<CodeEditor/>} />         <Route path="/home" element={<ProtectedRoute isAuthenticated={isAuthenticated} component={Home} />} />
 
   useEffect(() => {
     checkAuthenticated();
   }, []);
+
+  useEffect(() => {
+    console.log("Estado de autenticação mudou:", isAuthenticated);
+  }, [isAuthenticated]);
 
   return (
     <Router>
@@ -44,14 +61,14 @@ const App = () => {
         <Route exact path="/" element={<Login />} />
         <Route exact path="/quiz" element={<TheoreticalQuiz />} />
         {/* Protected routes go here */}
-        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} isLoading={isLoading} />}>
           <Route path="/home" element={<Home/>} />
           < Route path="/catalog" element={<Catalog/>}/>
         </Route>
         {/* Default redirect to login */}
         <Route path="*" element={<useNavigate to="/" />} />
       </Routes>
-      <ToastContainer theme="dark" autoClose={300}/>
+      <ToastContainer theme="dark" autoClose={1000}/>
     </Router>
     
   );
