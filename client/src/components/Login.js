@@ -67,7 +67,7 @@ function Login() {
             <button type="submit">Entrar</button>
             <div className='chunxo'>
               <a>Não tem uma conta?</a>
-              <Link to="/signup" style={{ color: '#f8bb0f' }}>Increva-se</Link>
+              <Link to="/signup" style={{ color: '#f8bb0f' }}>Inscreva-se</Link>
             </div>
             
           </form>
