@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Catalog from './components/Catalog';
 import Signup from './components/Signup';
@@ -13,6 +13,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
+
+  //const location = useLocation();
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -54,16 +57,19 @@ const App = () => {
     console.log("Estado de autenticação mudou:", isAuthenticated);
   }, [isAuthenticated]);
 
+  
+
   return (
+    
     <Router>
       <Routes>
         <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/" element={<Login />} />
+        <Route exact path="/" element={<Login checkAuthenticated={checkAuthenticated} />} />
         <Route exact path="/quiz" element={<TheoreticalQuiz />} />
         {/* Protected routes go here */}
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} isLoading={isLoading} />}>
           <Route path="/home" element={<Home/>} />
-          < Route path="/catalog" element={<Catalog/>}/>
+          <Route path="/catalog" element={<Catalog/>}/>
         </Route>
         {/* Default redirect to login */}
         <Route path="*" element={<useNavigate to="/" />} />

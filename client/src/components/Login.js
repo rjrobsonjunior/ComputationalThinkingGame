@@ -6,7 +6,7 @@ import "./Signup.css";
 import { useNavigate, Link } from 'react-router-dom'; 
 import { toast } from 'react-toastify';
 
-function Login() {
+function Login({ checkAuthenticated }) {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -24,12 +24,15 @@ function Login() {
 
       //Armanezar o token no sessionStorage (Ná)
       sessionStorage.setItem('token', res.data.token);
-      toast.success('Conectado com sucesso!'); 
       
-      navigate('/catalog'); 
+      // Chama a função para verificar a autenticação após login
+      await checkAuthenticated();
+      toast.success('Conectado com sucesso!');
+      navigate('/home'); // Navega para '/home' após a autenticação ser verificada
       console.log(res.data);
     } catch (error) {
-      toast.error('Falha ao logar!');
+      let text_error = 'Falha ao logar! ' + error.response.data.error;
+      toast.error(error.response.data.error);
       console.error(error.response.data);
     }
   };
@@ -37,6 +40,7 @@ function Login() {
   const handleClick = () => {
     navigate('/signup');
   };
+
   return (
     
     <div class="container" id="container">
