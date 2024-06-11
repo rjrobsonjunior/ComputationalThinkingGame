@@ -20,7 +20,7 @@ const TheoreticalQuiz = () => {
     };
 
     useEffect(() => {
-      const timeoutId = setTimeout(() => setShowCorrectAnswer(false), 2000); // Hide message after 1 second
+      const timeoutId = setTimeout(() => setShowCorrectAnswer(false), 2000);
       return () => clearTimeout(timeoutId); // Cleanup on unmount
     }, [selectedAnswer]);
 

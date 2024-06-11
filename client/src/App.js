@@ -7,6 +7,7 @@ import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './components/Home';
 import TheoreticalQuiz from './components/TheoreticalQuiz';
+import PraticalQuiz from './components/PraticalQuiz';
 //import CodeRunner from './components/CodeRunner'
 //import CodeEditor from './components/CodeEditor'
 import { ToastContainer } from 'react-toastify';
@@ -66,6 +67,7 @@ const App = () => {
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/" element={<Login checkAuthenticated={checkAuthenticated} />} />
         <Route exact path="/quiz" element={<TheoreticalQuiz />} />
+        <Route exact path="/praticalquiz" element={<PraticalQuiz />} />
         {/* Protected routes go here */}
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} isLoading={isLoading} />}>
           <Route path="/home" element={<Home/>} />

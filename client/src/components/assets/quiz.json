@@ -1,8 +1,8 @@
 [
     {
-    "question": "What command would reveal more information ONLY about the Scan function in the fmt package?",
-    "options": ["go doc", "go doc fmt", "fmt", "go doc fmt.Scan"],
-    "answer": "go doc fmt.Scan"
+    "question": "Qual das alternavas abaixo é um exemplo de comentário de linha única",
+    "options": ["'isso é um comentário?'", "console.log('comentario')", "// isso é um comentário", " /* comentario ...\n ... continação*/"],
+    "answer": "//isso é um comentário"
     },
     {
     "question": "Which of the following would be considered a literal in Go?",
