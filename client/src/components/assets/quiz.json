@@ -1,7 +1,7 @@
 [
     {
     "question": "Qual das alternavas abaixo é um exemplo de comentário de linha única",
-    "options": ["'isso é um comentário?'", "console.log('comentario')", "// isso é um comentário", " /* comentario ...\n ... continação*/"],
+    "options": ["'isso é um comentário?'", "console.log('comentario')", "//isso é um comentário", " /* comentario ...\n ... continação*/"],
     "answer": "//isso é um comentário"
     },
     {

@@ -36,6 +36,8 @@ const PraticalQuiz = () => {
     } else {
       setIsCorrect(false);
     }
+    console.log(quizData[currentQuestion].answer);
+    console.log(userInput.trim());
   };
 
   const handleRestartQuiz = () => {

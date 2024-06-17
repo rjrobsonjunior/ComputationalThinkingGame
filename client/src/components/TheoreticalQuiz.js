@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import "./TheoreticalQuiz.css";
 import quizData from "./assets/quiz.json";
+import { useNavigate } from 'react-router-dom';
 
 const TheoreticalQuiz = () => {
 
@@ -12,6 +13,8 @@ const TheoreticalQuiz = () => {
     const [answed, setAnswed] = useState(false);
     const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
 
+    const navigate = useNavigate();
+    
     const handleOptionClick = (option) => {
       if(!answed)
         setSelectedAnswer(option);
@@ -42,6 +45,7 @@ const TheoreticalQuiz = () => {
       setScore(0);
       setSelectedAnswer(null);
       setShowResult(false);
+      navigate('/praticalquiz');
     };
   
     const handleShowResult = () => {
@@ -86,7 +90,7 @@ const TheoreticalQuiz = () => {
       return (
         <div className='result-page'>
           <h2>You scored {score} out of {quizData.length}</h2>
-          <button onClick={handleRestartQuiz}>Restart Quiz</button>
+          <button onClick={handleRestartQuiz}>Próximo</button>
         </div>
       );
     };
