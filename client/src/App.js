@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import axios from 'axios';
 import Catalog from './components/Catalog';
 import Signup from './components/Signup';
@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './components/Home';
 import TheoreticalQuiz from './components/TheoreticalQuiz';
 import PraticalQuiz from './components/PraticalQuiz';
+import ProfileSettings from './components/ProfileSettings';
 //import CodeRunner from './components/CodeRunner'
 //import CodeEditor from './components/CodeEditor'
 import { ToastContainer } from 'react-toastify';
@@ -72,6 +73,7 @@ const App = () => {
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} isLoading={isLoading} />}>
           <Route path="/home" element={<Home/>} />
           <Route path="/catalog" element={<Catalog/>}/>
+          <Route path="/profile" element={<ProfileSettings/>}/>
         </Route>
         {/* Default redirect to login */}
         <Route path="*" element={<useNavigate to="/" />} />

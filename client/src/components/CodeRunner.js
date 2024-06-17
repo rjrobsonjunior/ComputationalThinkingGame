@@ -1,57 +1,70 @@
-import React, { useState } from 'react';
-import CodeEditor from './CodeEditor';
-import './CodeRunner.css';
+import React, { useState, useRef , useEffect} from 'react';
+import * as monaco from 'monaco-editor';
 
-const CodeEvaluator = () => {
-  const [code, setCode] = useState('');
-  const [output, setOutput] = useState(null);
-  const [expectedOutput, setExpectedOutput] = useState(null);
-  const [analysis, setAnalysis] = useState(null);
+const CodeRunner = () => {
+  const [userInput, setUserInput] = useState('');
+  const outputRef = useRef(null);
 
   const handleCodeChange = (event) => {
-    setCode(event.target.value);
+    setUserInput(event.target.value);
   };
+  const editorRef = useRef(null);
 
-  const handleExpectedOutputChange = (event) => {
-    setExpectedOutput(event.target.value);
-  };
+  useEffect(() => {
+    monaco.editor.create(editorRef.current, {
+      value: '',
+      language: 'javascript', // Set language mode
+      // Other editor options...
+    });
 
-  const handleRunCode = async () => {
+    // (Optional) Configure LSP server connection
+    // ... (See LSP server documentation for details)
+  }, []);
+
+  const runCode = async () => {
     try {
-      const result = await eval(code); // Consider security implications (see below)
-      setOutput(result);
-      setAnalysis(result === expectedOutput ? 'Correct!' : 'Incorrect');
+      const code = userInput.trim(); // Remove leading/trailing whitespace
+
+      // Use a sandboxed execution environment (recommended for security)
+      const blob = new Blob([code], { type: 'text/javascript' });
+      const url = URL.createObjectURL(blob);
+      const worker = new Worker(url);
+
+      worker.postMessage('run'); // Send message to worker
+
+      worker.onmessage = (event) => {
+        outputRef.current.textContent = event.data;
+      };
+
+      worker.onerror = (error) => {
+        outputRef.current.textContent = `Error: ${error.message}`;
+      };
+
+      // Clean up the worker after execution
+      worker.onmessage = worker.onerror = null;
+      URL.revokeObjectURL(url);
+
     } catch (error) {
-      setOutput('Error: ' + error.message);
-      setAnalysis('Error in code');
+      outputRef.current.textContent = `Error: ${error.message}`;
     }
   };
 
   return (
-    <div className='container'>
-      <h2>JavaScript Code Evaluator</h2>
-      <CodeEditor code={code} />
+    <div className="code-runner">
+      <h2>JavaScript Runner</h2>
+      <div ref={editorRef} />
       <textarea
-        value={code}
+        className="code-input"
+        value={userInput}
         onChange={handleCodeChange}
-        placeholder="Write your JavaScript code here"
+        placeholder="Enter your JavaScript code..."
       />
-      <br />
-      <label htmlFor="expectedOutput">Expected Output:</label>
-      <input
-        type="text"
-        id="expectedOutput"
-        value={expectedOutput}
-        onChange={handleExpectedOutputChange}
-        placeholder="Enter the expected output"
-      />
-      <br />
-      <button onClick={handleRunCode}>Run Code</button>
-      <br />
-      {output && <p>Output: {output}</p>}
-      {analysis && <p>Analysis: {analysis}</p>}
+      <button className="run-button" onClick={runCode}>
+        Run Code
+      </button>
+      <div className="output-container" ref={outputRef} />
     </div>
   );
 };
 
-export default CodeEvaluator;
+export default CodeRunner;
