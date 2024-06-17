@@ -4,7 +4,7 @@
 .quiz-content {
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: 80% ;
 }
   
   .markdown-container,
@@ -13,7 +13,7 @@
     padding: 10px;
     overflow-y: auto;
     background-color: #303235;
-    margin: 20px;
+    margin: 10px;
     border-radius: 5px;
   }
   

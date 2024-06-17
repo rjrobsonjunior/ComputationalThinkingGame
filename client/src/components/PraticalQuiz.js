@@ -47,6 +47,7 @@ const PraticalQuiz = () => {
     setIsCorrect(false);
     setShowResult(false);
   };
+  let progress = currentQuestion + 1;
   //<div className="quiz-content"><div className="markdown-section"> <ReactMarkdown>{markdownContent}</ReactMarkdown></div>
   return (
     <div className="quiz-container">
@@ -64,6 +65,15 @@ const PraticalQuiz = () => {
             <button className="next-button" disabled={!userInput.trim()} onClick={handleNextQuestion}>
               {isCorrect ? 'Correct! Next Question' : 'Submit Answer'}
             </button>
+          </div>
+          <div className='progress-bar'>
+            <span>{progress} / {quizData.length}</span>
+            <div className='progress-fill'>
+              <div style={{ width: `${(progress / quizData.length) * 100}%` }}></div>
+            </div>
+            <button className='button-next' onClick={handleNextQuestion} >
+            Próxima
+          </button>
           </div>
         </div>
       )}
