@@ -1,0 +1,23 @@
+/* src/index.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #202121;
+}
+
+.course-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #303235;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: whitew;
+}
+
+p {
+    line-height: 1.6;
+}
